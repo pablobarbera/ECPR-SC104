@@ -1,0 +1,33 @@
+---
+title: "Challenge 1: Collecting and analyzing Twitter data"
+author: Pablo Barbera
+date: "August 2, 2017"
+output: html_document
+---
+
+
+Now it's your turn to practice! Open a connection to the Streaming API and collect a sample of tweets based on keywords that you may find interesting. Keep it open for about a minute.
+
+```{r}
+
+```
+
+Then, read it in R and check who are the most popular users and which hashtags were used the most during this period. What do you find?
+
+```{r}
+
+```
+
+Turning to the REST API, collect the 2,000 most recent tweets from a Twitter account that you find relevant. Then, look at the most popular hashtags.
+
+```{r}
+
+```
+
+Using the code we ran earlier, produce a word cloud with the most frequent words in that account's tweets. What does it tell you?
+
+```{r}
+
+```
+
+

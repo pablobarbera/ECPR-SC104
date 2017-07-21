@@ -1,0 +1,112 @@
+---
+title: "Social network analysis with R: Descriptive analysis"
+author: Pablo Barbera
+date: "August 3, 2017"
+output: html_document
+---
+
+#### Measuring node importance
+
+What are the most important nodes in a network? What is the propensity of two nodes that are connected to be both connected to a third node? What are the different hidden communities in a network? These are some of the descriptive questions that we will adress now.
+
+This time, we will analyze a network of retweets. This data comes from an article we recently published in [PLOS ONE](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0143611) where we use network analysis to study the online component of large-scale protest events. This particular network represents all retweets of tweets mentioning "minimum wage" in the first 20 days of February 2014.
+
+```{r, echo=FALSE, message=FALSE}
+library(igraph)
+edges <- read.csv("data/mwage-edges.csv", stringsAsFactors=F)
+nodes <- read.csv("data/mwage-nodes.csv", stringsAsFactors=FALSE)
+g <- graph_from_data_frame(d=edges, vertices=nodes, directed=TRUE)
+V(g)$name <- V(g)$screen_name # we add screen names as labels to make them more informative
+```
+
+Note that this time the network is directed, because retweets flow from one user to another.
+
+#### Node properties
+
+We'll start with descriptive statistics at the node level. All of these are in some way measures of importance or __centrality__.
+
+The most basic measure is __degree__, the number of adjacent edges to each node. It is often considered a measure of direct influence. In this network, it will be the total number of times each user is retweeting someone else, or is retweeted his/herself.
+
+```{r}
+sort(degree(g))
+```
+
+In directed graphs, there are three types of degree: indegree (incoming edges), outdegree (outgoing edges), and total degree. You can compute these using `mode="in"` or `mode="out"` or `mode="total"`. 
+
+```{r}
+tail(sort(degree(g, mode="in"))) # number of times retweeted
+tail(sort(degree(g, mode="out"))) # number of times retweeting
+```
+
+__Closeness__ measures how many steps are required to access every other node from a given node. It's a measure of how long information takes to arrive (who hears news first?). Higher values mean less centrality.
+
+```{r}
+sort(closeness(g, normalized=TRUE))
+```
+
+__Betweenness__ measures brokerage or gatekeeping potential. It is (approximately) the number of shortest paths between nodes that pass through a particular node.
+
+```{r}
+sort(betweenness(g))
+```
+
+#### Network properties
+
+Let's now try to describe what a network looks like as a whole. An important measure is `edge_density` -- the proportion of edges in the network over all possible edges that could exist.
+
+```{r}
+edge_density(g)
+```
+
+`reciprocity` measures the propensity of each edge to be a mutual edge; that is, the probability that if `i` is connected to `j`, `j` is also connected to `i`.
+
+```{r}
+reciprocity(g)
+```
+
+`transitivity`, also known as clustering coefficient, measures that probability that adjacent nodes of a network are connected. In other words, if `i` is connected to `j`, and `j` is connected to `k`, what is the probability that `i` is also connected to `k`?
+
+```{r}
+transitivity(g)
+```
+
+#### Network communities
+
+Networks often have different clusters or communities of nodes that are more densely connected to each other than to the rest of the network. Let's cover some of the different existing methods to identify these communities.
+
+The most straightforward way to partition a network is into __connected components__. Each component is a group of nodes that are connected to each other, but _not_ to the rest of the nodes.
+
+```{r}
+components(g)
+```
+
+Most networks have a single __giant connected component__ that includes most nodes. Most studies of networks actually focus on the giant component (e.g. the shortest path between nodes in a network with two or more component is Inf!), so from this point on we'll just work with the giant component.
+
+```{r}
+giant <- decompose(g)[[1]]
+g <- giant
+```
+
+Components can be __weakly connected__ (in undirected networks) or __strongly connected (in directed networks, where there is an edge that ends in every single node of that component).
+
+Even within a giant component, there can be different subsets of the network that are more connected to each other than to the rest of the network. The goal of __community detection algorithms__ is to identify these subsets.
+
+There are a few different algorithms, each following a different logic: walktrap algorith, infomap, fast and greedy, edge-betweenness, label propagation... Exploring each of these goes beyond the scope of this course, but you can read the documentation for more details.
+
+
+My experience is that infomap tends to work better in most social science examples (websites, social media, classrooms, etc), so we'll go along with it just to take a look at the output
+
+```{r}
+comm <- cluster_infomap(g)
+```
+
+The final way in which we can think about network communities is in terms of hierarchy or structure. We'll discuss one of these methods.
+
+__K-core decomposition__ allows us to identify the core and the periphery of the network. A k-core is a maximal subnet of a network such that all nodes have at least degree K.
+
+```{r, fig.height=5, figh.width=6}
+coreness(g)
+which(coreness(g)==6) # what is the core of the network?
+which(coreness(g)==1) # what is the periphery of the network?
+```
+

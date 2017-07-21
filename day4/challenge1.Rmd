@@ -1,0 +1,43 @@
+---
+title: "Challenge 1: Sentiment analysis of political tweets and speeches"
+author: Pablo Barbera
+date: "August 3, 2017"
+output: html_document
+---
+
+Dictionary methods are often sensitive to the presence of specific words that may appear very frequently in a document. Here you will explore whether that could be an issue in the example we just saw. The goal of this challenge is to replicate the sentiment analysis example but excluding the word "great". 
+
+The first step is to exclude this word from the lexicon:
+
+```{r}
+# remove word "great" from dictionary
+lexicon <- lexicon[-which(lexicon$word=="great"),]
+```
+
+Now, paste here the same code as before, run it, and examine the results. Did anything change?
+
+```{r}
+
+```
+
+We will now examine whether this result still holds when we look at a different source of text -- the campaign speeches you scraped on Monday. Load that dataset (also available as `data/campaign-speeches.csv`) and create two corpus objects, one for each candidate. Use the `kwic` function to examine in what context the word `great` appears for each candidate.
+
+```{r}
+
+```
+
+Now, produce two word clouds based on each corpus object. What do you learn from this analysis?
+
+```{r}
+
+
+```
+
+Finally, replicate the sentiment analysis we conducted earlier, but this time using campaign speeches. Which of the two candidates is more positive? Do you get the same result as when you used tweets?
+
+```{r}
+
+```
+
+
+

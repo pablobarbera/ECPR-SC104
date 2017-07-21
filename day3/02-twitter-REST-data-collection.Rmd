@@ -1,0 +1,123 @@
+---
+title: "Scraping data from Twitter's REST API"
+author: "Pablo Barbera"
+date: "August 2, 2017"
+output: html_document
+---
+
+### Scraping web data from Twitter
+
+#### Collecting data from Twitter's REST API
+
+It is possible to download recent tweets, but only up those less than 7 days old, and in some cases not all of them. We will use the `netdemR` package for this (and the other functions that scrape Twitter's REST API).
+
+```{r}
+library(netdemR)
+library(streamR)
+
+searchTweets(q=c("graham", "mccain"), 
+  filename="senator-tweets.json",
+  n=1000, until="2017-07-30", 
+  oauth_folder="credentials")
+
+tweets <- parseTweets("senator-tweets.json")
+```
+
+What are the most popular hashtags?
+```{r}
+library(stringr)
+ht <- str_extract_all(tweets$text, "#(\\d|\\w)+")
+ht <- unlist(ht)
+head(sort(table(ht), decreasing = TRUE))
+```
+
+You can check the documentation about the options for string search [here](https://dev.twitter.com/rest/public/search).
+
+This is how you would extract information from user profiles:
+
+```{r}
+wh <- c("realDonaldTrump", "POTUS", "VP", "FLOTUS")
+users <- getUsersBatch(screen_names=wh,
+                       oauth_folder="credentials")
+str(users)
+```
+
+Which of these has the most followers?
+```{r}
+users[which.max(users$followers_count),]
+users$screen_name[which.max(users$followers_count)]
+```
+
+Download up to 3,200 recent tweets from a Twitter account:
+```{r}
+getTimeline(filename="realDonaldTrump.json", screen_name="realDonaldTrump", 
+    n=1000, oauth_folder="credentials")
+```
+
+What are the most common hashtags?
+```{r}
+tweets <- parseTweets("realDonaldTrump.json")
+ht <- str_extract_all(tweets$text, "#(\\d|\\w)+")
+ht <- unlist(ht)
+head(sort(table(ht), decreasing = TRUE))
+```
+
+Download friends and followers:
+```{r}
+followers <- getFollowers("ecpr", 
+    oauth_folder="credentials")
+friends <- getFriends("ecpr", 
+    oauth_folder="credentials")
+```
+
+What are the most common words that friends of the ECPR Twitter account use to describe themselves on Twitter?
+
+```{r, fig.height=6, fig.width=6}
+# extract profile descriptions
+users <- getUsersBatch(ids=friends, oauth_folder="credentials")
+# create table with frequency of word use
+library(quanteda)
+tw <- corpus(users$description[users$description!=""])
+dfm <- dfm(tw, ignoredFeatures=c(stopwords("english"), stopwords("spanish"),
+                                 "t.co", "https", "rt", "rts", "http"))
+wf <- tfidf(dfm)
+# create wordcloud
+par(mar=c(0,0,0,0))
+plot(wf, rot.per=0, scale=c(3, .50), max.words=100)
+
+```
+
+Other functions that could be of use at some point:
+
+```{r}
+# Finding users related to keywords
+users <- searchUsers(q="ecpr", count=100, oauth_folder="credentials")
+# Downloading tweets when you know the ID
+getStatuses(ids=c("474134260149157888", "266038556504494082"), filename="old-tweets.json",
+            oauth_folder="credentials")
+parseTweets("old-tweets.json")
+# download user information from a list
+MCs <- getList(list_name="new-members-of-congress", 
+               screen_name="cspan", oauth_folder="credentials")
+head(MCs)
+# format Twitter dates to facilitate analysis
+tweets <- parseTweets("realDonaldTrump.json")
+tweets$date <- formatTwDate(tweets$created_at, format="date")
+hist(tweets$date, breaks="month")
+# Download list of users who retweeted a tweet (unfortunately, only up to 100)
+rts <- getRetweets(id='474134260149157888', oauth_folder="credentials")
+
+users <- getUsersBatch(ids=rts, oauth_folder="credentials")
+# create table with frequency of word use
+library(quanteda)
+tw <- corpus(users$description[users$description!=""])
+dfm <- dfm(tw, ignoredFeatures=c(stopwords("english"), stopwords("spanish"),
+                                 "t.co", "https", "rt", "rts", "http"))
+wf <- tfidf(dfm)
+# create wordcloud
+par(mar=c(0,0,0,0))
+plot(wf, rot.per=0, scale=c(3, .50), max.words=100)
+
+```
+
+
