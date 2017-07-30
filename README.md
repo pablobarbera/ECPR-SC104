@@ -30,6 +30,9 @@ You can also subscribe to the repository if you have [a GitHub account](https://
 
 The first part (Day 1) will offer an introduction to the course and then dive into the basics of webscraping; that is, how to automatically collect data from the web. This session will demonstrate the two most common scenarios for webscraping: when data is in table format (e.g. Wikipedia tables or election results) and when it is in an unstructured format (e.g. across multiple parts of a website). The tools available in R to achieve these goals – the rvest and RSelenium packages – will be introduced in the context of applied examples in the social sciences. Students are also encouraged to come to class with examples from their own research, and we will leave some time at the end of class to go over one or two. As we study different methods to scrape data, we will also learn how to efficiently parallelize loops and work with lists, as two of the most important building blocks of a scalable data collection process.
 
+
+[Slides: Introduction to the course (.pdf)](day1/slides-intro.pdf)
+
 [Slides: Scraping the web (.pdf)](day1/slides-scraping.pdf)
 
 [Code: Scraping tables (.html)](day1/01-scraping-tables.html)
@@ -102,11 +105,11 @@ An underappreciated part of the research process is data manipulation – it is 
 The last session will begin with an overview of how to learn how to extract data from PDF files, both in text and table formats. This session will also feature a closer look at best practices in statistical computing, building upon the different examples used during the first four days. We will also cover how to merge datasets from different sources, in cases with both identical and similar merging keys (i.e. when a numeric ID is the same across datasets, but also when only country names with slightly different spellings are the only variable that is common to multiple datasets), and how to efficiently compute summary statistics and other aggregated estimates based on a data frame with dplyr.
 
 
-[Code: Extracting data from PDF files (.html)](day4/03-data-in-PDFs.html)
+[Code: Extracting data from PDF files (.html)](day4/01-data-in-PDFs.html)
+
+[Challenge 1: Analyzing the Amnesty International Annual Report](day5/challenge1.Rmd)
 
 [Code: Merging multiple datasets (.html)](day5/02-merging.html)
-
-[Challenge 1: ](day5/challenge1.Rmd)
 
 [Code: Introduction to dplyr and the tidyverse](day5/03-tidyverse.html)
 
