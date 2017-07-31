@@ -1,9 +1,14 @@
 # Summer School: Automated Collection of Web and Social Data
 
+For more information, see the [ECPR Course website](https://ecpr.eu/Events/PanelDetails.aspx?PanelID=7055&EventID=116)
+
 ## Part of the 
 * [2017 ECPR Summer School in Methods and Techniques](https://ecpr.eu/Events/EventDetails.aspx?EventID=116)
 
 ## CEU, Budapest, July 31 - August 4, 2017
+
+Hours: 14:00 - 17:30
+Location: N13 Room 517
 
 ## Instructors
 
