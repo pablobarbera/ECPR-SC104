@@ -1,5 +1,5 @@
 ---
-title: "Challenge 1: Scraping Campaign Speeches"
+title: "Challenge 2: Scraping Campaign Speeches"
 author: Pablo Barbera
 date: "July 31, 2017"
 output: html_document
