@@ -10,14 +10,20 @@ We will continue where we left off in the first challenge earlier today. Copy an
 ```{r}
 url <- "http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=70&campaign=2016CLINTON&doctype=5000"
 ## READ HTL CODE ##
-
+library(rvest)
+html <- read_html(url)
+tab <- html_table(html, fill=TRUE)
+clinton <- tab[[8]]
+names(clinton) <- c("actor", "date", "title")
+clinton <- clinton[-1,]
 ```
 
 As we saw, this table will not contain the URL, but we will need them this challenge. You should now be able to know how to use selectorGadget to identify the CSS selector of the URLs for each campaign speech, and then write code to extract all the URLs in a vector. As a last step here, add that vector as an additional variable in the data frame.
 
 
 ```{r}
-
+urls <- html_attr(html_nodes(html, ".listdate a"), "href")
+urls <- str_replace(urls, "\\.\\.", "http://www.presidency.ucsb.edu/ws")
 ```
 
 Now let's try to scrape the text from the first campaign speech. Here's a [direct link](http://www.presidency.ucsb.edu/ws/index.php?pid=96348) to it, but in a second we'll try to generalize this step.

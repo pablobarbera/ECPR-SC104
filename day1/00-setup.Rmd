@@ -9,19 +9,11 @@ output:
 
 Welcome to the summer school!
 
-Before we start our coding session, let's become a bit more familiar with RStudio Server (which we will use to interact with R) and RMarkdown.
+Before we dive into our first coding session, let's become a bit more familiar with the programming tools used in this course.
 
-__Why R?__ 
+We will be rely on [RStudio](https://www.rstudio.com/) to interact with R, and write our annotated R code using [Markdown](http://rmarkdown.rstudio.com).
 
-- Currently used by most statisticians and social scientists interested in data analysis; and also becoming one of most [popular languages in Data Science](http://www.kdnuggets.com/2015/05/r-vs-python-data-science.html).
-- Open source: makes it highly customizable and easily extensible through ["packages"](https://cran.r-project.org/web/packages/) (over 10,000 and counting!).
-- Powerful tool to conduct automated text analysis, social network analysis, and data visualization, with packages such as quanteda, igraph or ggplot2.
-- Command-line interface and scripts favors reproducibility.
-- Excellent documentation and online help resources.
-
-We will be using [RStudio](https://www.rstudio.com/) to interact with R, and write our annotated R code using [Markdown](http://rmarkdown.rstudio.com).
-
-__RStudio Server__ is an open-source integrated development environment (IDE) that you can run on the cloud. The main advantage of RStudio with respect to other graphical interfaces, such as R GUI (the default), is that it integrates a powerful built-in text editor as well as other tools for plotting, debugging, and workspace management. The Server version of RStudio, which we are now running in an Amazon Web Services instance, will allow all of us to connect to the same server and run the code remotely.
+__RStudio Server__ is an open-source integrated development environment (IDE) that you can run on the cloud. The main advantage of RStudio with respect to other graphical interfaces, such as R GUI (the default), is that it integrates a powerful built-in text editor as well as other tools for plotting, debugging, and workspace management. The Server version of RStudio, which we are now running in an Amazon Web Services instance, will allow all of us to connect to the same server (with the same setup and installed packages) and run the code remotely.
 
 __Markdown__ is a simple formatting syntax to generate HTML or PDF documents. In combination with R, it will generate a document that includes the comments, the R code, and the output of running such code.
 

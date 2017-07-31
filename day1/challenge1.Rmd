@@ -13,7 +13,7 @@ We will start with the list of campaign speeches by Hillary Clinton, available [
 
 ```{r}
 url <- "http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=70&campaign=2016CLINTON&doctype=5000"
-## READ HTL CODE ##
+## READ HTML CODE ##
 
 ```
 

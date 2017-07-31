@@ -122,12 +122,13 @@ str(pop)
 
 As in the previous case, we still need to clean the data before we can use it. For this particular example, let's see if this dataset provides evidence in support of [Zipf's law for population ranks](https://en.wikipedia.org/wiki/Zipf%27s_law).
 
-We'll use regular expressions to remove endnotes and commas in the population numbers, and clean the variable names.
+We'll use regular expressions to remove endnotes and commas in the population numbers, and clean the variable names. (We'll come back to this later in the course.)
 
 ```{r}
 pop$City <- gsub('\\[.*\\]', '', pop$City)
-pop$population <- as.numeric(gsub(",", "", pop[,"2016 estimate"]))
-pop$rank <- pop[,"2016 rank"]
+library(stringr)
+pop$population <- as.numeric(str_replace_all(pop[,"2016\nestimate"], ",", ""))
+pop$rank <- pop[,"2016\nrank"]
 head(pop[,c("City", "population", "rank")])
 ```
 

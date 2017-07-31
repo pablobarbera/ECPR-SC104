@@ -33,15 +33,17 @@ The first part (Day 1) will offer an introduction to the course and then dive in
 
 [Slides: Introduction to the course (.pdf)](day1/slides-intro.pdf)
 
+[Code: Scraping tables (.html)](day1/00-setup.html)
+
 [Slides: Scraping the web (.pdf)](day1/slides-scraping.pdf)
 
 [Code: Scraping tables (.html)](day1/01-scraping-tables.html)
 
-[Code: Loops, vectorized functions, and lists (.html)](day1/02-computing.html)
-
 [Challenge 1: Scraping the American President Project website (Part I)](day1/challenge1.Rmd)
 
-[Code: Scraping unstructured data (.html)](day1/03-scraping-unstructured-data.html)
+[Code: Scraping unstructured data (.html)](day1/02-scraping-unstructured-data.html)
+
+[Code: Loops, vectorized functions, and lists (.html)](day1/03-computing.html)
 
 [Challenge 2: Scraping the American President Project website (Part II)](day1/challenge2.Rmd)
 
