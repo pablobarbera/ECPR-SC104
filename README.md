@@ -33,17 +33,17 @@ The first part (Day 1) will offer an introduction to the course and then dive in
 
 [Slides: Introduction to the course (.pdf)](day1/slides-intro.pdf)
 
-[Code: Scraping tables (.html)](day1/00-setup.html)
+[Code: Scraping tables (.html)](html/day1/00-setup.html)
 
 [Slides: Scraping the web (.pdf)](day1/slides-scraping.pdf)
 
-[Code: Scraping tables (.html)](day1/01-scraping-tables.html)
+[Code: Scraping tables (.html)](html/day1/01-scraping-tables.html)
 
 [Challenge 1: Scraping the American President Project website (Part I)](day1/challenge1.Rmd)
 
-[Code: Scraping unstructured data (.html)](day1/02-scraping-unstructured-data.html)
+[Code: Scraping unstructured data (.html)](html/day1/02-scraping-unstructured-data.html)
 
-[Code: Loops, vectorized functions, and lists (.html)](day1/03-computing.html)
+[Code: Loops, vectorized functions, and lists (.html)](html/day1/03-computing.html)
 
 [Challenge 2: Scraping the American President Project website (Part II)](day1/challenge2.Rmd)
 
@@ -58,9 +58,9 @@ NGOs, public institutions, and social media companies increasingly rely on Appli
 
 [Challenge 1: Working with the NYTimes API](day2/challenge1.Rmd)
 
-[Code: Advanced scraping with Selenium (.html)](day2/02-advanced-scraping.html)
+[Code: Advanced scraping with Selenium (.html)](html/day2/02-advanced-scraping.html)
 
-[Code: Extracting media text from newspaper articles (.html)](day2/03-newspaper-articles.html)
+[Code: Extracting media text from newspaper articles (.html)](html/day2/03-newspaper-articles.html)
 
 [Challenge 2: Scraping articles from The Guardian](day2/challenge2.Rmd)
 
@@ -70,15 +70,15 @@ In the third session, we will learn how to use the most popular R packages to qu
 
 [Slides: Twitter data (.pdf)](day3/slides-twitter.pdf)
 
-[Code: Collecting Twitter data from the Streaming API (.html)](day3/01-twitter-streaming-data-collection.html)
+[Code: Collecting Twitter data from the Streaming API (.html)](html/day3/01-twitter-streaming-data-collection.html)
 
-[Code: Collecting Twitter data from the REST API (.html)](day3/02-twitter-REST-data-collection.html)
+[Code: Collecting Twitter data from the REST API (.html)](html/day3/02-twitter-REST-data-collection.html)
 
 [Challenge 1: Collecting and analyzing Twitter data](day3/challenge1.Rmd)
 
 [Slides: Facebook data (.pdf)](day3/slides-facebook.pdf)
 
-[Code: Collecting Facebook data (.html)](day3/03-facebook-data-collection.html)
+[Code: Collecting Facebook data (.html)](html/day3/03-facebook-data-collection.html)
 
 [Challenge 2: Collecting and analyzing Facebook data](day3/challenge2.Rmd)
 
@@ -88,17 +88,17 @@ An underappreciated part of the research process is data manipulation – it is 
 
 [Slides: text data (.pdf)](day4/slides-text.pdf)
 
-[Code: Introduction to text analysis (.html)](day4/01-text-intro.html)
+[Code: Introduction to text analysis (.html)](html/day4/01-text-intro.html)
 
-[Code: Dictionary methods (.html)](day4/02-dictionary-methods.html)
+[Code: Dictionary methods (.html)](html/day4/02-dictionary-methods.html)
 
 [Challenge 1: Challenge 1: Sentiment analysis of political tweets and speeches](day4/challenge1.Rmd)
 
 [Slides: network data (.pdf)](day4/network-text.pdf)
 
-[Code: Introduction to network analysis (.html)](day4/03-networks-intro-visualization.html)
+[Code: Introduction to network analysis (.html)](html/day4/03-networks-intro-visualization.html)
 
-[Code: Introduction to network analysis (.html)](day4/04-networks-descriptive-analysis.html)
+[Code: Introduction to network analysis (.html)](html/day4/04-networks-descriptive-analysis.html)
 
 [Challenge 2: Challenge: Polarization of interaction patterns on Twitter](day4/challenge2.Rmd)
 
@@ -107,11 +107,11 @@ An underappreciated part of the research process is data manipulation – it is 
 The last session will begin with an overview of how to learn how to extract data from PDF files, both in text and table formats. This session will also feature a closer look at best practices in statistical computing, building upon the different examples used during the first four days. We will also cover how to merge datasets from different sources, in cases with both identical and similar merging keys (i.e. when a numeric ID is the same across datasets, but also when only country names with slightly different spellings are the only variable that is common to multiple datasets), and how to efficiently compute summary statistics and other aggregated estimates based on a data frame with dplyr.
 
 
-[Code: Extracting data from PDF files (.html)](day4/01-data-in-PDFs.html)
+[Code: Extracting data from PDF files (.html)](html/day4/01-data-in-PDFs.html)
 
 [Challenge 1: Analyzing the Amnesty International Annual Report](day5/challenge1.Rmd)
 
-[Code: Merging multiple datasets (.html)](day5/02-merging.html)
+[Code: Merging multiple datasets (.html)](html/day5/02-merging.html)
 
 [Code: Introduction to dplyr and the tidyverse](day5/03-tidyverse.html)
 
