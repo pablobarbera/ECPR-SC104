@@ -17,7 +17,6 @@ The fist step is to identify the base url and the parameters that we can use to 
 
 ```{r}
 base_url <- "http://api.nytimes.com/svc/search/v2/articlesearch.json"
-# install.packages("httr")
 library(httr)
 r <- GET(base_url, query=list(q="inequality","api-key"=apikey))
 r
