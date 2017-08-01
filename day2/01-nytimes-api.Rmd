@@ -95,7 +95,7 @@ nyt_years_count <- function(q, yearinit, yearend){
 ```
 ```{r, eval=FALSE}
 # and let's see what happens...
-nyt_years_count(q="inequality", yearinit=1950, yearend=2012)
+nyt_years_count(q="inequality", yearinit=1980, yearend=2012)
 ```
 
 Oops! What happened? Why the error? We're querying the API too fast. Let's modify the function to add a `while` loop that will wait a couple of seconds in case there's an error:
@@ -155,7 +155,7 @@ nyt_dates_count <- function(q, init, end, by){
 
 And now we can count articles at the month level...
 ```{r}
-counts <- nyt_dates_count(q="trump", init = as.Date("2015/01/01"), end = as.Date("2017/05/30"), by="month")
+counts <- nyt_dates_count(q="trump", init = as.Date("2015/01/01"), end = as.Date("2017/07/31"), by="month")
 plot(counts$date, counts$count, type="l", main="Mentions of 'Trump' in the NYT, by month",
      xlab="Month", ylab="Article count")
 ```

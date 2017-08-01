@@ -61,11 +61,13 @@ NGOs, public institutions, and social media companies increasingly rely on Appli
 
 [Code: Scraping the New York Times](day2/01-nytimes-api.html)
 
+[Code: Working with the Clarifai API](day2/02-clarifai-api.html)
+
 [Challenge 1: Working with the NYTimes API](day2/challenge1.Rmd)
 
-[Code: Advanced scraping with Selenium (.html)](html/day2/02-advanced-scraping.html)
+[Code: Advanced scraping with Selenium (.html)](html/day2/03-advanced-scraping.html)
 
-[Code: Extracting media text from newspaper articles (.html)](html/day2/03-newspaper-articles.html)
+[Code: Extracting media text from newspaper articles (.html)](html/day2/04-newspaper-articles.html)
 
 [Challenge 2: Scraping articles from The Guardian](day2/challenge2.Rmd)
 

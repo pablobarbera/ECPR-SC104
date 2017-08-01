@@ -1,7 +1,7 @@
 ---
-title: "Scraping unstructured data"
+title: "Advanced scraping with Selenium"
 author: "Pablo Barbera"
-date: "July 31, 2017"
+date: "August 1st, 2017"
 output: html_document
 ---
 
@@ -48,14 +48,13 @@ We can see what the website looks like at any time by taking screenshots. This w
 browser$screenshot(display=TRUE)
 ```
 
-Let's assume we want to see the results of the state of Distrito Capital for the GPP party. First, let's use selectorGated to identify the elements that we're trying to scrape. Then, click on the list of states and parties to find the exact state and party you would want to scrape.
+Let's assume we want to see the results of the state of Distrito Capital for the GPP party. First, let's use selectorGadget to identify the elements that we're trying to scrape. Then, click on the list of states and parties to find the exact state and party you would want to scrape.
 
 ```{r}
 state <- browser$findElement(using = 'id', value="estado")
 state$sendKeysToElement(list("Distrito Capital"))
 browser$screenshot(display=TRUE)
 
-```{r}
 party <- browser$findElement(using = 'id', value="partido")
 party$sendKeysToElement(list("GPP"))
 browser$screenshot(display=TRUE)
