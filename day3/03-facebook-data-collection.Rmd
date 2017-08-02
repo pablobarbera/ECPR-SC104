@@ -59,6 +59,22 @@ page[which.max(page$angry_count),]
 ```
 
 
+Let's do another example, looking at the Facebook page of ECPR:
+
+```{r}
+page <- getPage("ECPRnet", token=fb_oauth, n=100, reactions=TRUE, api="v2.9") 
+# most popular posts
+page[which.max(page$likes_count),]
+page[which.max(page$comments_count),]
+page[which.max(page$shares_count),]
+# other reactions
+page[which.max(page$love_count),]
+page[which.max(page$haha_count),]
+page[which.max(page$wow_count),]
+page[which.max(page$sad_count),]
+page[which.max(page$angry_count),]
+```
+
 We can also subset by date. For example, imagine we want to get all the posts from early November 2012 on Barack Obama's Facebook page
 
 ```{r}
@@ -99,18 +115,85 @@ If we want to scrape an entire page that contains many posts, given that the API
 
 ```{r}
 # list of dates to sample
-dates <- seq(as.Date("2007/01/01"), as.Date("2017/08/01"), by="month")
+dates <- seq(as.Date("2011/01/01"), as.Date("2017/08/01"), by="3 months")
 n <- length(dates)-1
 df <- list()
 # loop over months
 for (i in 1:n){
     message(as.character(dates[i]))
-    df[[i]] <- getPage("BarackObama", token, n=1000, since=dates[i],
-    	until=dates[i+1]), silent=TRUE)
+    df[[i]] <- getPage("GameOfThrones", token=fb_oauth, n=1000, since=dates[i],
+    	until=dates[i+1], verbose=FALSE)
     Sys.sleep(0.5)
 }
 df <- do.call(rbind, df)
+write.csv(df, file="data/gameofthrones.csv", row.names=FALSE)
 ```
+
+And we can then look at the popularity over time:
+
+```{r}
+library(netdemR)
+library(stringr)
+library(reshape2)
+# parse date into month
+df$month <- df$created_time %>% str_sub(1, 7) %>% paste0("-01") %>% as.Date()
+# computing average by month
+metrics <- aggregate(cbind(likes_count, comments_count, shares_count) ~ month,
+          data=df, FUN=mean)
+# reshaping into long format
+metrics <- melt(metrics, id.vars="month")
+# visualize evolution in metric
+library(ggplot2)
+library(scales)
+ggplot(metrics, aes(x = month, y = value, group = variable)) + 
+  geom_line(aes(color = variable)) + 
+    scale_x_date(date_breaks = "years", labels = date_format("%Y")) + 
+  scale_y_log10("Average count per post", 
+    breaks = c(10, 100, 1000, 10000, 100000, 200000), labels=scales::comma) + 
+  theme_bw() + theme(axis.title.x = element_blank())
+
+```
+
+Just like public Facebook pages, the data from public groups can also be easily downloaded with the getGroup function. Note that this will only work for groups that the authenticated user is a member of.
+
+```{r}
+group <- getGroup("150048245063649", token=fb_oauth, n=50)
+
+```
+
+If you own or administer a public page, you will be able to get some statistics about the users of that page using `getInsights`. The only page statistic that is publicly available is the number of users per country:
+
+```{r}
+insights <- getInsights('DonaldTrump', 
+     token=fb_oauth, metric='page_fans_country', period='lifetime')
+# selecting data as of today
+insights <- insights[grep("2017-07-31", insights$end_time),]
+# countries with most fans
+head(insights[order(insights$value, decreasing=TRUE),])
+# fans outside the US
+sum(insights$value[insights$variable!="US"]) /
+  sum(insights$value)
+
+insights <- getInsights('HillaryClinton', 
+     token=fb_oauth, metric='page_fans_country', period='lifetime')
+# selecting data as of today
+insights <- insights[grep("2017-07-31", insights$end_time),]
+# countries with most fans
+head(insights[order(insights$value, decreasing=TRUE),])
+# fans outside the US
+sum(insights$value[insights$variable!="US"]) /
+  sum(insights$value)
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
