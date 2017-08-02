@@ -75,19 +75,19 @@ NGOs, public institutions, and social media companies increasingly rely on Appli
 
 In the third session, we will learn how to use the most popular R packages to query social media APIs: rtweet, streamR, and Rfacebook. These packages allow researchers to collect tweets filtered by keywords, location, and language in real time, and to scrape public Facebook pages, including likes and comments. The process of collecting and storing the data will be illustrated with examples from published research on social media.
 
-[Slides: Twitter data (.pdf)](day3/slides-twitter.pdf)
+[Slides: Social Media data (.pdf)](day3/slides-social-media.pdf)
 
 [Code: Collecting Twitter data from the Streaming API (.html)](html/day3/01-twitter-streaming-data-collection.html)
 
+[Challenge 1: Collecting Twitter data from the Streaming API](day3/challenge1.Rmd)
+
 [Code: Collecting Twitter data from the REST API (.html)](html/day3/02-twitter-REST-data-collection.html)
 
-[Challenge 1: Collecting and analyzing Twitter data](day3/challenge1.Rmd)
-
-[Slides: Facebook data (.pdf)](day3/slides-facebook.pdf)
+[Challenge 2: Collecting Twitter data from the REST API](day3/challenge2.Rmd)
 
 [Code: Collecting Facebook data (.html)](html/day3/03-facebook-data-collection.html)
 
-[Challenge 2: Collecting and analyzing Facebook data](day3/challenge2.Rmd)
+[Challenge 3: Collecting and analyzing Facebook data](day3/challenge3.Rmd)
 
 ## Day 4
 
