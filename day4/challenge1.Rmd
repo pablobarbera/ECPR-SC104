@@ -10,21 +10,41 @@ Dictionary methods are often sensitive to the presence of specific words that ma
 The first step is to exclude this word from the lexicon:
 
 ```{r}
+# YOUR CODE HERE
+
 # remove word "great" from dictionary
 lexicon <- lexicon[-which(lexicon$word=="great"),]
+
+
 ```
 
-Now, paste here the same code as before, run it, and examine the results. Did anything change?
+Now, run the sentiment analysis again and examine the results. Did anything change?
 
 ```{r}
 
 ```
 
-We will now examine whether this result still holds when we look at a different source of text -- the campaign speeches you scraped on Monday. Load that dataset (also available as `data/campaign-speeches.csv`) and create two corpus objects, one for each candidate. Use the `kwic` function to examine in what context the word `great` appears for each candidate.
+We will now examine whether this result still holds when we look at a different source of text -- the campaign speeches you scraped on Monday. Load that dataset (also available as `../data/campaign-speeches.csv`) into R. Then, subset the dataset so that it only includes speeches from 2016, to make sure we can compare what we have for each candidate.
+
+```{r}
+speeches <- read.csv("../data/campaign-speeches.csv", stringsAsFactors=F)
+
+```
+
+Create two corpus objects, one for each candidate. Use the `kwic` function to examine in what context the word `great` appears in each case
 
 ```{r}
 
+
 ```
+
+Compute the average and median length (in characters AND in number of words) for the speeches by each candidate. Who gave the longest speeches?
+
+```{r}
+
+
+```
+
 
 Now, produce two word clouds based on each corpus object. What do you learn from this analysis?
 

@@ -12,7 +12,7 @@ We will start with basic string manipulation with R.
 Our running example will be a random sample of 10,000 tweets mentioning the names of the candidates to the 2014 EP elections in the UK. We'll save the text of these tweets as a vector called `text'
 
 ```{r}
-tweets <- read.csv("data/EP-elections-tweets.csv", stringsAsFactors=F)
+tweets <- read.csv("../data/EP-elections-tweets.csv", stringsAsFactors=F)
 head(tweets)
 text <- tweets$text
 ```
@@ -33,44 +33,49 @@ sum(nchar(text[1:10]))
 max(nchar(text[1:10]))
 ```
 
-We can merge different strings into one using `paste`:
+We can merge different strings into one using `paste`. The default is adding a space between strings; but there's also `paste0`, which will leave no space:
+
 ```{r}
 paste(text[1], text[2], sep='--')
+paste("one", "two")
+paste0("one", "two")
 ```
 
-Charcter vectors can be compared using the `==` and `%in%` operators:
+Character vectors can be compared using the `==` and `%in%` operators:
 
 ```{r}
 tweets$screen_name[1]=="martinwedge"
 "DavidCoburnUKip" %in% tweets$screen_name
 ```
 
-As we will see later, it is often convenient to convert all words to lowercase or uppercase.
+For more advanced string manipulation, we will use the `stringr` library, created by Hadley Wickham, which standardized most of the techniques we want to employ. For example, this is how we would convert all words to lowercase or uppercase.
 
 ```{r}
-tolower(text[1])
-toupper(text[1])
+library(stringr)
+str_to_lower(text[1])
+str_to_upper(text[1])
+str_to_title(text[1])
 ```
 
-We can grab substrings with `substr`. The first argument is the string, the second is the beginning index (starting from 1), and the third is final index.
+We can grab substrings with `str_sub`. The first argument is the string, the second is the beginning index (starting from 1), and the third is final index.
 
 ```{r}
-substr(text[1], 1, 2)
-substr(text[1], 1, 10)
+str_sub(text[1], 1, 2)
+str_sub(text[1], 1, 10)
 ```
 
 This is useful when working with date strings as well:
 
 ```{r}
 dates <- c("2015/01/01", "2014/12/01")
-substr(dates, 1, 4) # years
-substr(dates, 6, 7) # months
+str_sub(dates, 1, 4) # years
+str_sub(dates, 6, 7) # months
 ```
 
 We can split up strings by a separator using `strsplit`. If we choose space as the separator, this is in most cases equivalent to splitting into words.
 
 ```{r}
-strsplit(text[1], " ")
+str_split(text[1], " ")
 ```
 
 Let's dit into the data a little bit more. Given the construction of the dataset, we can expect that there will be many tweets mentioning the names of the candidates, such as @Nigel_Farage, We can use the `grep` command to identify these. `grep` returns the index where the word occurs.
@@ -137,27 +142,27 @@ length(grep('@[A-Za-z0-9]+ ', tweets$text, ignore.case=TRUE))
 ```
 
 
-Another function that we will use is `gsub`, which replaces a pattern (or a regular expression) with another string:
+Another function that we will use is `str_replace`, which replaces a pattern (or a regular expression) with another string:
 
 ```{r}
-gsub('@[0-9_A-Za-z]+', 'USERNAME', text[1])
+str_replace(text[1], '@[0-9_A-Za-z]+', 'USERNAME')
 ```
 
-To extract a pattern, and not just replace, use parentheses and choose the option `repl="\\1"`:
+To extract a pattern, and not just replace, use `str_extract`. If there are multiple instances, choose `str_extract_all` instead
 
 ```{r}
-gsub('.*@([0-9_A-Za-z]+) .*', text[1], repl="\\1")
+str_extract(text[1], '@[0-9_A-Za-z]+')
+str_extract_all("one user is @one and another user is @another", '@[0-9_A-Za-z]+')
 ```
 
-You can make this a bit more complex using `gregexpr`, which will extract the location of the matches, and then `regmatches` 
+Here's a more complex example which we already saw yesterday:
 
 ```{r}
-handles <- gregexpr('@([0-9_A-Za-z]+)', text)
-handles <- regmatches(text, handles)
+handles <- str_extract_all(text, '@[0-9_A-Za-z]+')
 handles <- unlist(handles)
 head(sort(table(handles), decreasing=TRUE), n=25)
 # now with hashtags...
-hashtags <- regmatches(text, gregexpr("#(\\d|\\w)+",text))
+hashtags <- str_extract_all(text, "#(\\d|\\w)+")
 hashtags <- unlist(hashtags)
 head(sort(table(hashtags), decreasing=TRUE), n=25)
 ```
@@ -186,7 +191,7 @@ A useful feature of corpus objects is _keywords in context_, which returns all t
 
 ```{r}
 kwic(twcorpus, "brexit", window=10)
-kwic(twcorpus, "miliband", window=10)
+kwic(twcorpus, "merkel", window=10)
 kwic(twcorpus, "eu referendum", window=10)
 ```
 
@@ -200,8 +205,8 @@ twdfm
 `dfm` has many useful options. Let's actually use it to stem the text, extract n-grams, remove punctuation, keep Twitter features...
 
 ```{r}
-?dfm
-twdfm <- dfm(twcorpus, tolower=TRUE, stem=TRUE, remove_punct = TRUE, ngrams=1:3, verbose=TRUE)
+twdfm <- dfm(twcorpus, tolower=TRUE, stem=TRUE, remove_punct = TRUE, ngrams=1:3, verbose=TRUE,
+             remove_twitter=FALSE)
 twdfm
 ```
 
@@ -222,6 +227,8 @@ tokens_wordstem(tokenize("esto es un ejemplo"), language="es")
 tokens_wordstem(tokenize("ceci est un exemple"), language="fr")
 tokens_wordstem(tokenize("это пример"), language="ru")
 tokens_wordstem(tokenize("dies ist ein Beispiel"), language="fr")
+# full list:
+SnowballC::getStemLanguages()
 ```
 
 In a large corpus like this, many features often only appear in one or two documents. In some case it's a good idea to remove those features, to speed up the analysis or because they're not relevant. We can `trim` the dfm:
@@ -268,22 +275,21 @@ And then extract the text:
 mytexts <- texts(polite.tweets)
 ```
 
-We'll come back later to this dataset.
-
 ### Importing text with quanteda
 
 There are different ways to read text into `R` and create a `corpus` object with `quanteda`. We have already seen the most common way, importing the text from a csv file and then adding the metadata, but `quanteda` has a built-in function to help with this:
 
 ```{r}
 library(readtext)
-tweets <- readtext(file='data/EP-elections-tweets.csv')
+tweets <- readtext(file='../data/EP-elections-tweets.csv')
 twcorpus <- corpus(tweets)
 ```
 
 This function will also work with text in multiple files. To do this, we use the textfile command, and use the 'glob' operator '*' to indicate that we want to load multiple files:
 
 ```{r}
-myCorpus <- readtext(file='data/inaugural/*.txt')
+myCorpus <- readtext(file='../data/inaugural/*.txt')
 inaugCorpus <- corpus(myCorpus)
+inaugCorpus
 ```
 

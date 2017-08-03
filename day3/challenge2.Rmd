@@ -1,5 +1,5 @@
 ---
-title: "Challenge 1: Collecting and analyzing Twitter data"
+title: "Challenge 2: Collecting and analyzing Twitter data"
 author: Pablo Barbera
 date: "August 2, 2017"
 output: html_document

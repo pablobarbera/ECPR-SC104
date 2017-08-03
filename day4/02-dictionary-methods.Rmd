@@ -15,12 +15,12 @@ Let's apply this technique to tweets by the four leading candidates in the 2016 
 
 ```{r}
 library(quanteda)
-tweets <- read.csv('data/candidate-tweets.csv', stringsAsFactors=F)
+tweets <- read.csv('../data/candidate-tweets.csv', stringsAsFactors=F)
 ```
 
 ```{r}
 # loading lexicon of positive and negative words (from Neal Caren)
-lexicon <- read.csv("data/lexicon.csv", stringsAsFactors=F)
+lexicon <- read.csv("../data/lexicon.csv", stringsAsFactors=F)
 pos.words <- lexicon$word[lexicon$polarity=="positive"]
 neg.words <- lexicon$word[lexicon$polarity=="negative"]
 # a look at a random sample of positive and negative words

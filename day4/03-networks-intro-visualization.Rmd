@@ -12,9 +12,9 @@ In this training session we will be using a small network that indicates [intera
 The first step is to read the list of edges and nodes in this network:
 
 ```{r}
-edges <- read.csv("data/star-wars-network-edges.csv")
+edges <- read.csv("../data/star-wars-network-edges.csv")
 head(edges)
-nodes <- read.csv("data/star-wars-network-nodes.csv")
+nodes <- read.csv("../data/star-wars-network-nodes.csv")
 head(nodes)
 ```
 
