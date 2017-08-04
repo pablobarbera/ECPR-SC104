@@ -114,23 +114,13 @@ An underappreciated part of the research process is data manipulation – it is 
 The last session will begin with an overview of how to learn how to extract data from PDF files, both in text and table formats. This session will also feature a closer look at best practices in statistical computing, building upon the different examples used during the first four days. We will also cover how to merge datasets from different sources, in cases with both identical and similar merging keys (i.e. when a numeric ID is the same across datasets, but also when only country names with slightly different spellings are the only variable that is common to multiple datasets), and how to efficiently compute summary statistics and other aggregated estimates based on a data frame with dplyr.
 
 
-[Code: Extracting data from PDF files (.html)](html/day4/01-data-in-PDFs.html)
+[Code: Dealing with encoding issues (.html)](html/day5/01-encoding.html)
+
+[Code: Merging and reshaping datasets; Exception handling (.html)](html/day5/02-advanced.html)
+
+[Code: Extracting data from PDF files (.html)](html/day4/03-data-in-PDFs.html)
 
 [Challenge 1: Analyzing the Amnesty International Annual Report](day5/challenge1.Rmd)
-
-[Code: Merging multiple datasets (.html)](html/day5/02-merging.html)
-
-[Code: Introduction to dplyr and the tidyverse](day5/03-tidyverse.html)
-
-[Challenge 2: ](day5/challenge2.Rmd)
-
-
-
-
-
-
-
-
 
 
 

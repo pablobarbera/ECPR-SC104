@@ -22,7 +22,7 @@ Note that `tabulizer` is not just on CRAN. See [here](https://github.com/ropensc
 The first example will be relatively easy -- the file `docs/2016results.pdf` contains the certified election results for the 2016 presidential election. The goal here is to extract the table on the first page. We will use the `extract_tables` function.
 
 ```{r}
-d <- extract_tables("docs/2016results.pdf", pages=1)
+d <- extract_tables("../docs/2016results.pdf", pages=1)
 ```
 
 Note that `tabula` is sufficiently smart to extract only the table and discard the rest.
@@ -53,13 +53,13 @@ results$state[results$clinton < results$trump]
 Let's now work on a more complex example. What happens when there are multiple tables in the same page? `tabulizer` has an interactive tool that will help you identify the specific parts of a page that contain the table, the `extract_areas` function. It will display a viewer window where you can see the entire page, and then you can select the part of the page that contains the table.
 
 ```{r, eval=FALSE}
-d <- extract_areas("docs/multiple-tables.pdf")
+d <- extract_areas("../docs/multiple-tables.pdf")
 ```
 
 In this case it may not be as useful, because the regular `extract_tables` would have also worked, but for very large pages, or when you want to modify the default selected area, this can come in handy:
 
 ```{r}
-d <- extract_tables("docs/multiple-tables.pdf")
+d <- extract_tables("../docs/multiple-tables.pdf")
 tab <- d[[3]][-(1:2),]
 performance <- as.numeric(substr(tab[,2], 1, 6))
 # and now produce a bar plot
@@ -83,13 +83,13 @@ system("pdftotext")
 As you can see, we can ran pdftotext with different configurations. Which one is best will depend on your application. As a first example, let's look at a press release from the European Court of Human Rights about the outcome a case.
 
 ```{r}
-system("pdftotext docs/press-release.pdf")
+system("pdftotext ../docs/press-release.pdf")
 ```
 
 The output file (in plain text) will have the same name unless we change it.
 
 ```{r}
-system("pdftotext docs/press-release.pdf docs/press-release-output.txt")
+system("pdftotext ../docs/press-release.pdf ../docs/press-release-output.txt")
 ```
 
 If you look at the text of the file, you can see some of what we discussed earlier - any text that is internally represented as an image cannot be parsed.
@@ -97,7 +97,7 @@ If you look at the text of the file, you can see some of what we discussed earli
 We can also choose the specific pages to parse:
 
 ```{r}
-system("pdftotext -f 1 -l 2 docs/press-release.pdf")
+system("pdftotext -f 1 -l 2 ../docs/press-release.pdf")
 ```
 
 Let's now work on a more advanced example. The document `docs/arrests.pdf` contains a [list of Argentinian citizens arrested during the Pinochet regime](http://ftp2.errepar.com/bo/2013/04/SUPLE_17-04-2013.pdf). We'll try to parse the list here into a data frame format.
@@ -109,13 +109,13 @@ system("pdftotext docs/arrests.pdf")
 Note that by default `pdftotext` will try to ignore the column layout, but if we wanted we would keep it:
 
 ```{r}
-system("pdftotext -layout docs/arrests.pdf docs/arrests-layout.txt")
+system("pdftotext -layout ../docs/arrests.pdf ../docs/arrests-layout.txt")
 ```
 
 We can now use regular expressions to identify the blocks of text with the names of the arrests (because they are always in the first article of each decree), as well as the dates (because they all have "Bs. As." right before):
 
 ```{r}
-txt <- readLines("docs/arrests.txt")
+txt <- readLines("../docs/arrests.txt")
 txt[200:250]
 # names of those arrested
 ar.init <- grep("Arréstese.*", txt)

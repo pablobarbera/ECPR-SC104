@@ -1,0 +1,183 @@
+---
+title: "Encoding issues"
+author: Pablo Barbera
+date: August 4, 2017
+output: html_document
+---
+  
+## Wordclouds with Japanese, Korean, and Chinese characters
+  
+```{r, eval=FALSE}
+load("../credentials/twitter-token.Rdata")
+sw <- readLines("../data/stopwords-ja.txt")
+
+filterStream("../data/japanese-tweets.json",
+	track=sw, timeout=30, oauth=my_oauth)
+````
+
+```{r}
+# reading into R
+tweets <- streamR::parseTweets("../data/japanese-tweets.json", simplify=TRUE)
+library(quanteda)
+tw <- corpus(tweets$text)
+twdfm <- dfm_select(dfm(tw, remove_punct = TRUE, verbose=TRUE, remove_url=TRUE),
+                    min_nchar=2)
+topfeatures(twdfm, n=25)
+
+```
+
+What doesn't work:
+
+```{r}
+textplot_wordcloud(twdfm, rot.per=0, scale=c(3, .75), max.words=100)
+```
+
+But this should now work:
+
+```{r}
+pdf("wordcloud.pdf", family="Japan1")
+textplot_wordcloud(twdfm, rot.per=0, scale=c(3, .75), max.words=100)
+dev.off()
+```
+
+<img src="wordcloud.pdf" width="1000" height="1000">
+
+How to choose the family font? See `?postscriptFonts`.
+
+## Dealing with Unicode headaches
+
+Unicode text can take different forms. Here we'll see some of the most common and how to avoid getting errors when we parse text scraped from the web. We'll be using the `stringi` package for some of the code here.
+
+```{r}
+# some text in German
+de <- "Einbahnstraße"
+# all good!
+textplot_wordcloud(tokens(de))
+
+# what if it looks like this? (Unicode characters)
+de <- "Einbahnstra\u00dfe"
+# as long as encoding is properly declared, all will be fine and
+# we can switch back and forth
+Encoding(de)  # this should be UTF-8
+message(de)
+Encoding(de) <- "latin1"
+message(de)
+Encoding(de) <- "UTF-8"
+message(de)
+
+# we can also use the stringi package
+library(stringi)
+stri_unescape_unicode("Einbahnstra\u00dfe")
+
+# what if it looks like this? (Unicode characters as HEX/bite codes)
+# see: http://www.fileformat.info/info/unicode/char/00df/index.htm
+de <- "Einbahnstra<c3><9f>e"
+# this will not work:
+stri_unescape_unicode(de)
+
+# one solution from stack overflow:
+# https://stackoverflow.com/questions/25468716/convert-byte-encoding-to-unicode
+m <- gregexpr("<[0-9a-f]{2}>", de)
+codes <- regmatches(de,m)
+chars <- lapply(codes, function(x) {
+    rawToChar(as.raw(strtoi(paste0("0x",substr(x,2,3)))), multiple=T)
+})
+regmatches(de,m) <- chars
+de
+
+# what is happening here? We're replacing:
+codes
+# with:
+chars
+
+# switching to a different language...
+# what if it looks like this?
+example <- c(
+  "SAD DA POMOGNU RJE<U+0160>AVANJE POLITI<U+010C>KE KRIZE", 
+  "PROBLEME GURAJU POD TEPIH", 
+  "ODAO PRIZNANJE DR<U+017D>AVI")
+# different representation of Unicode characters, e.g.:
+# http://www.fileformat.info/info/unicode/char/0160/index.htm
+
+# Things get even more complicated...
+# One solution here:
+# https://stackoverflow.com/questions/28248457/gsub-in-r-with-unicode-replacement-give-different-results-under-windows-compared
+# we're basically going to convert to regular Unicode characters that
+# R will be able to parse
+
+trueunicode.hack <- function(string){
+    m <- gregexpr("<U\\+[0-9A-F]{4}>", string)
+    if(-1==m[[1]][1])
+        return(string)
+
+    codes <- unlist(regmatches(string, m))
+    replacements <- codes
+    N <- length(codes)
+    for(i in 1:N){
+        replacements[i] <- intToUtf8(strtoi(paste0("0x", substring(codes[i], 4, 7))))
+    }
+
+    # if the string doesn't start with a unicode, the copy its initial part
+    # until first occurrence of unicode
+    if(1!=m[[1]][1]){
+        y <- substring(string, 1, m[[1]][1]-1)
+        y <- paste0(y, replacements[1])
+    }else{
+        y <- replacements[1]
+    }
+
+    # if more than 1 unicodes in the string
+    if(1<N){
+        for(i in 2:N){
+            s <- gsub("<U\\+[0-9A-F]{4}>", replacements[i], 
+                      substring(string, m[[1]][i-1]+8, m[[1]][i]+7))
+            Encoding(s) <- "UTF-8"
+            y <- paste0(y, s)
+        }
+    }
+
+    # get the trailing contents, if any
+    if( nchar(string)>(m[[1]][N]+8) )
+        y <- paste0( y, substring(string, m[[1]][N]+8, nchar(string)) )
+    y
+}
+
+trueunicode.hack(example[1])
+trueunicode.hack(example[2])
+trueunicode.hack(example[3])
+
+# and here's how we would convert back and forth...
+# same text in Croatian
+example <- "SAD DA POMOGNU RJEŠAVANJE POLITIČKE KRIZE"
+Encoding(example) # UTF-8
+# convert to ASCII and delete non-ASCII characters
+iconv(example, "UTF-8", "ASCII", sub="")
+# convert to latin1 and substitute to byte characters
+(lat <- iconv(example, "UTF-8", "latin1", sub="byte"))
+
+m <- gregexpr("<[0-9a-f]{2}>", lat)
+codes <- regmatches(lat,m)
+chars <- lapply(codes, function(x) {
+    rawToChar(as.raw(strtoi(paste0("0x",substr(x,2,3)))), multiple=T)
+})
+regmatches(lat,m) <- chars
+lat
+
+
+```
+
+And one final example...
+
+
+```{r}
+library(corpus)
+example <- "\U0001F602 \U0001F64C \U0001F602" # extended unicode character
+utf8_print(example)
+# you can search for the unicode representations of all these characters online
+
+```
+
+
+
+
+
