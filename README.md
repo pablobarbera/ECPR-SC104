@@ -118,7 +118,7 @@ The last session will begin with an overview of how to learn how to extract data
 
 [Code: Merging and reshaping datasets; Exception handling (.html)](html/day5/02-advanced.html)
 
-[Code: Extracting data from PDF files (.html)](html/day4/03-data-in-PDFs.html)
+[Code: Extracting data from PDF files (.html)](html/day5/03-data-in-PDFs.html)
 
 [Challenge 1: Analyzing the Amnesty International Annual Report](day5/challenge1.Rmd)
 
