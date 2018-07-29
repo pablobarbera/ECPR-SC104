@@ -1,0 +1,35 @@
+---
+title: "Challenge 1: Scraping Campaign Speeches (Part I)"
+author: Pablo Barbera
+date: July 30, 2018
+output: html_document
+---
+
+The purpose of this challenge is to start practicing your webscrapings skills by collecting a dataset with all the campaign speeches by Donald Trump and Hillary Clinton, available in [The American Presidency Project website](http://www.presidency.ucsb.edu/index.php)
+
+As with the rest of challenges throughout this week, the goal is to write R code in the chunks within this RMarkdown file that will accomplish the tasks detailed below.
+
+We will start with the list of campaign speeches by Hillary Clinton, available [here](http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=70&campaign=2016CLINTON&doctype=5000). Look at the underlying html code and then read the html data into R.
+
+```{r}
+url <- "http://www.presidency.ucsb.edu/2016_election_speeches.php?candidate=70&campaign=2016CLINTON&doctype=5000"
+## READ HTML CODE ##
+
+```
+
+Then, using the code we have used in the first part of the session, you should be able to extract the relevant information from this page. The goal here is to end up with a data frame with three variables: actor, date, and title of the speech. You can call this data frame `clinton`.
+
+```{r}
+
+```
+
+(OPTIONAL). Note that this table will not contain the URL, but we will need them for the second part of this exercise. Can you figure out a way to extract the URLs? We'll come back to this problem in Challenge 2 later today...
+
+```{r}
+
+```
+
+
+
+
+

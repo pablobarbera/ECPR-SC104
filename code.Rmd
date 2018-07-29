@@ -1,0 +1,124 @@
+---
+title: Code
+---
+
+The following list provides links to the slides and code used in the guided coding sessions. The solutions to the challenges will be made available through RStudio Server.
+
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h2 id="day1" class="panel-title">
+<a data-toggle="collapse" href="#collapse2">Monday July 30: Scraping the web (Part 1).</a>
+</h2>
+</div>
+<div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
+
+<ul>
+<li><p><a href="slides/01-slides-intro.pdf">SLIDES: Introduction to the course</a></p>
+</li>
+
+<li><p><a href="code/00-setup.html">Introduction to RMarkdown and Setup</a> (<a href="code/00-setup.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="slides/02-slides-scraping.pdf">SLIDES: Web scraping</a></p>
+</li>
+
+<li><p><a href="code/01-scraping-tables.html">Scraping tables</a> (<a href="code/01-scraping-tables.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/challenge1.Rmd">Coding challenge 1 (.Rmd file)</a></p>
+</li>
+
+<li><p><a href="code/02-loops-functions.html">Lists, Functions, and Loops
+</a> (<a href="code/02-loops-functions.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/03-scraping-unstructured-data.html">Scraping unstructured data from the web
+</a> (<a href="code/03-scraping-unstructured-data.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/challenge2.Rmd">Coding challenge 2 (.Rmd file)</a></p>
+</li>
+
+
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h2 id="day1" class="panel-title">
+<a data-toggle="collapse" href="#collapse2">Tuesday July 31st: Scraping the web (Part 2).</a>
+</h2>
+</div>
+<div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
+
+<ul>
+
+<li> Coming soon... </li>
+
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h2 id="day1" class="panel-title">
+<a data-toggle="collapse" href="#collapse3">Wednesday August 1st: Working with APIs.</a>
+</h2>
+</div>
+<div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
+
+<ul>
+
+<li> Coming soon... </li>
+
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h2 id="day1" class="panel-title">
+<a data-toggle="collapse" href="#collapse4">Thursday August 2nd: Collecting data from Twitter.</a>
+</h2>
+</div>
+<div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
+
+<ul>
+
+<li> Coming soon... </li>
+
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h2 id="day1" class="panel-title">
+<a data-toggle="collapse" href="#collapse5">Friday August 3rd: Advanced topics.</a>
+</h2>
+</div>
+<div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
+
+<ul>
+
+<li> Coming soon... </li>
+
+</ul>
+</div>
+</div>
+</div>
+
