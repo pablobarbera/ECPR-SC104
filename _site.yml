@@ -2,7 +2,7 @@ name: "Automated Collection of Web and Social Data"
 exclude: ["README.md", "bib/*", "data"]
 output_dir: "docs"
 navbar:
-  title: "EITM: Social Media Research"
+  title: "ECPR SC104"
   left:
     - text: "Overview"
       href: "index.html"
