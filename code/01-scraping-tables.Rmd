@@ -84,19 +84,22 @@ As in the previous case, we still need to clean the data before we can use it. F
 We'll use regular expressions to remove endnotes and commas in the population numbers, and clean the variable names. (We'll come back to this later in the course.)
 
 ```{r}
-pop$City <- gsub('\\[.*\\]', '', pop$City)
-pop$population <- pop[,"2017\nestimate"]
+pop$city_name <- gsub('\\[.*\\]', '', pop$City)
+pop$population <- pop[,"2017estimate"]
 pop$population <- as.numeric(gsub(",", "", pop$population))
-pop$rank <- pop[,"2017\nrank"]
+pop$rank <- pop[,"2017rank"]
+pop <- pop[,c("rank", "population", "city_name")]
 ```
 
 Now we're ready to generate the figure:
 
 ```{r}
 library(ggplot2)
-p <- ggplot(pop, aes(x=rank, y=population, label=City))
+p <- ggplot(pop, aes(x=rank, y=population, label=city_name))
 pq <- p + geom_point() + geom_text(hjust=-.1, size=3) +
-	scale_x_log10("log(rank)") + scale_y_log10("log(population)")
+	scale_x_log10("log(rank)") + 
+  scale_y_log10("log(population)", labels=scales::comma) +
+  theme_minimal()
 pq
 ```
 
