@@ -1,0 +1,66 @@
+---
+title: "Challenge 3: Automating online searches"
+author: Pablo Barbera
+date: July 31, 2018
+output: html_document
+---
+
+In this challenge we will practice our advanced scraping skills with Selenium by trying to automate an online search. Note that this is something we would not actually do in practice, as it is likely to violate the terms of service of most search engines, but for this exercise it should be fine.
+
+We will rely on the DuckDuckGo search engine. Let's start by opening a headless browser...
+
+```{r}
+library(RSelenium)
+library(wdman)
+server <- phantomjs(port=6300L)
+browser <- remoteDriver(browserName = "phantomjs", port=6300L)
+url <- "https://duckduckgo.com/"
+```
+
+Now write code to open the browser and navigate to the URL above. Take a screenshot to demonstrate that you really got there.
+
+```{r}
+
+```
+
+Open the URL in your regular browser and use SelectorGadget (or the page source) to find the element that corresponds to the search bar. Then, send any text to that element. Again, take a screenshot to see if it worked.
+
+```{r}
+
+```
+
+If it did, then the next step is to find the button that will actually do the search, and click on it. As before, take a screenshot to see if it took you to the results page.
+
+```{r}
+
+```
+
+In the resulting page, extract the first 10 results and store them in a data frame with title and URL.
+
+```{r}
+
+```
+
+(Optional). Search engines are often accused of giving people misleading auto-suggestions. Let's scrape a few of these to understand generally whether that's the case. 
+
+Go back to the homepage and type something on the search bar (e.g. "budapest is").
+
+```{r}
+
+```
+
+Write code to automatically scrape the results that are suggested.
+
+```{r}
+
+```
+
+Try with a few other cities. What do you find?
+```{r}
+
+```
+
+
+
+
+
