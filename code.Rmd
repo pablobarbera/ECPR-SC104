@@ -26,7 +26,7 @@ The following list provides links to the slides and code used in the guided codi
 <li><p><a href="code/01-scraping-tables.html">Scraping tables</a> (<a href="code/01-scraping-tables.Rmd">.Rmd file</a>)</p>
 </li>
 
-<li><p><a href="code/challenge1.Rmd">Coding challenge 1 (.Rmd file)</a></p>
+<li><p><a href="code/challenge1.Rmd">Coding challenge 1: Scraping Campaign Speeches (Part I) (.Rmd file)</a></p>
 </li>
 
 <li><p><a href="code/02-loops-functions.html">Lists, Functions, and Loops
@@ -37,7 +37,7 @@ The following list provides links to the slides and code used in the guided codi
 </a> (<a href="code/03-scraping-unstructured-data.Rmd">.Rmd file</a>)</p>
 </li>
 
-<li><p><a href="code/challenge2.Rmd">Coding challenge 2 (.Rmd file)</a></p>
+<li><p><a href="code/challenge2.Rmd">Coding challenge 2: Scraping Campaign Speeches (Part II) (.Rmd file)</a></p>
 </li>
 
 
@@ -60,22 +60,13 @@ The following list provides links to the slides and code used in the guided codi
 <li><p><a href="slides/03-slides-advanced-scraping.pdf">SLIDES: Advanced web scraping</a></p>
 </li>
 
-<li><p><a href="code/04-advanced-scraping.html">Scraping websites using Selenium</a> (<a href="code/04-advanced-scraping.Rmd">.Rmd file</a>)</p>
+<li><p><a href="code/04-text-analysis.html">Basics of text analysis</a> (<a href="code/04-text-analysis.Rmd">.Rmd file</a>)</p>
 </li>
 
-<li><p><a href="code/challenge3.Rmd">Coding challenge 3 (.Rmd file)</a></p>
+<li><p><a href="code/05-advanced-scraping.html">Scraping websites using Selenium</a> (<a href="code/05-advanced-scraping.Rmd">.Rmd file</a>)</p>
 </li>
 
-
-<li><p><a href="code/05-text-analysis.html">Basics of text analysis</a> (<a href="code/05-text-analysis.Rmd">.Rmd file</a>)</p>
-</li>
-
-
-<li><p><a href="code/06-newspaper-articles.html">Scraping newspaper websites
-</a> (<a href="code/06-newspaper-articles.Rmd">.Rmd file</a>)</p>
-</li>
-
-<li><p><a href="code/challenge4.Rmd">Coding challenge 4 (.Rmd file)</a></p>
+<li><p><a href="code/challenge3.Rmd">Coding challenge 3: Automating online searches (.Rmd file)</a></p>
 </li>
 
 </ul>
@@ -95,7 +86,24 @@ The following list provides links to the slides and code used in the guided codi
 
 <ul>
 
-<li> Coming soon... </li>
+<li><p><a href="code/06-newspaper-articles.html">Scraping newspaper websites
+</a> (<a href="code/06-newspaper-articles.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/challenge4.Rmd">Coding challenge 4: Scraping The Guardian's homepage (.Rmd file)</a></p>
+</li>
+
+<li><p><a href="code/07-nytimes-api.html">Scraping data from APIs
+</a> (<a href="code/07-nytimes-api.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/08-clarifai-api.html">Interacting with the Clarifai API
+</a> (<a href="code/08-clarifai-api.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/challenge5.Rmd">Coding challenge 5: Working with the NYTimes API (.Rmd file)</a></p>
+</li>
+
 
 </ul>
 </div>
@@ -113,8 +121,22 @@ The following list provides links to the slides and code used in the guided codi
 <div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
 
 <ul>
+<li><p><a href="slides/04-slides-social-media.pdf">SLIDES: Social media data</a></p>
+</li>
 
-<li> Coming soon... </li>
+<li><p><a href="code/09-twitter-streaming-data-collection.html">Scraping data from Twitter's Streaming API</a> (<a href="code/09-twitter-streaming-data-collection.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/challenge6.Rmd">Coding challenge 6: Streaming API (.Rmd file)</a></p>
+</li>
+
+
+<li><p><a href="code/10-twitter-REST-data-collection.html">Scraping data from Twitter's REST API</a> (<a href="code/10-twitter-REST-data-collection.Rmd">.Rmd file</a>)</p>
+</li>
+
+<li><p><a href="code/challenge7.Rmd">Coding challenge 7: REST API (.Rmd file)</a></p>
+</li>
+
 
 </ul>
 </div>

@@ -34,41 +34,41 @@ We will follow a "learning-by-doing" approach, with short guided coding sessions
 <tr>
 <td>Monday July 30, 2018</td>
 <td><b>Session 1</b></td>
-<td>Basics of webscraping. Scraping web data in table format.</td>
+<td>Basics of webscraping. </td>
 <td> 14:00&ndash;15:30 </td>
 </tr>
 
 <tr>
 <td></td>
 <td><b>Session 2</b></td>
-<td>Scraping web data in unstructured format.</td>
+<td>Scraping web data in table format.</td>
 <td> 16:00&ndash;17:30 </td>
 </tr>
 
 <td>Tuesday July 31, 2018</td>
 <td><b>Session 1</b></td>
-<td>Scraping data behind web forms with Selenium.</td>
+<td>Scraping web data in unstructured format.</td>
 <td> 14:00&ndash;15:30 </td>
 </tr>
 
 <tr>
 <td></td>
 <td><b>Session 2</b></td>
-<td>Extracting media text from newspaper articles using RSS feeds.</td>
+<td>Scraping data behind web forms with Selenium. Regular expressions. Basics of text analysis.</td>
 <td> 16:00&ndash;17:30 </td>
 </tr>
 
 
 <td>Wednesday August 1st, 2018</td>
 <td><b>Session 1</b></td>
-<td>Interacting with web APIs</td>
+<td>Extracting media text from newspaper articles using RSS feeds.</td>
 <td> 14:00&ndash;15:30 </td>
 </tr>
 
 <tr>
 <td></td>
 <td><b>Session 2</b></td>
-<td>Regular expressions. Basics of text analysis.</td>
+<td>Interacting with web APIs.</td>
 <td> 16:00&ndash;17:30 </td>
 </tr>
 

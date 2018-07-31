@@ -1,0 +1,80 @@
+---
+title: "Working with the Clarifai API"
+author: "Pablo Barbera"
+date: "August 1, 2018"
+output: html_document
+---
+
+### Clarifai
+
+As another example of how R can interact with APIs, we'll look at the Clarifai API. Clarifai is an NYC-based company that offers image recognition solutions using artificial intelligence. One of their products is an API that will apply a variety of machine learning models to detect the objects in a picture or video. You can see an example of it can do [here](https://www.clarifai.com/demo).
+
+Although there is an excellent R package to interact with the Clarifai API, created by Gaurav Sood, unfortunately at the moment it doesn't work with the current authentication system, so we'll write our code from scratch.
+
+We'll be replicating the example [here](https://developer.clarifai.com/guide/predict#predict).
+
+The first step is to load the package we will use to make the requests, _httr_ and add the base URL for this API endpoint, as well as the API key (we will use mine for now, but you can create yours [here](https://developer.clarifai.com/signup/)).
+
+```{r}
+library(httr)
+apikey <- 'c6f237cf41ae4f3687acc253e23d0a46'
+base_url <- "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs"
+```
+
+Now we will add the body of our request -- the URL of the image we want to classify ([this one](http://i.imgur.com/XmAr3jV.jpg)), embedded within an object in JSON format and with a specific structure. (See the website above for more details.)
+
+We can either type the object in JSON as text (recommended in this case, given its complexity), or create it from within R as a list:
+
+```{r}
+requests <- '
+  {
+    "inputs": [
+      {
+        "data": {
+          "image": {
+            "url": "http://i.imgur.com/XmAr3jV.jpg"
+          }
+        }
+      }
+    ]
+  }'
+
+req <- list("inputs" = list())
+req$inputs[[1]] <- list(data=list(image=list(url = "http://i.imgur.com/XmAr3jV.jpg")))
+requests <- rjson::toJSON(req)
+```
+
+And now we're ready to run the query! Note that unlike the previous examples, since here we're sending some additional data, we need to do a _POST_ request instead of a _GET_:
+
+```{r}
+r <- POST(base_url, 
+	add_headers(
+		"Authorization" = "Key c6f237cf41ae4f3687acc253e23d0a46",
+		"Content-Type" = "application/json"),
+	body = requests)
+r
+```
+
+Did it work? So far so good. Now let's try to parse the response into a list
+
+```{r}
+r <- content(r, "parsed")
+```
+
+We can extract the parts of the list that we need to see the main labels predicted for this picture:
+
+```{r}
+for (result in r$outputs[[1]]$data$concepts){
+	message('object: ', result$name, ' -- probability: ',
+		result$value)
+}
+```
+
+
+
+
+
+
+
+
+

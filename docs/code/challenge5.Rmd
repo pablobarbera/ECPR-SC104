@@ -1,0 +1,44 @@
+---
+title: "Challenge 5: Working with the NYTimes API"
+author: Pablo Barbera
+date: "August 1, 2018"
+output: html_document
+---
+
+You will now work on applying what we just learned to a different API offered by the New York Times: their "Most Popular" API (http://developer.nytimes.com/most_popular_api_v2.json).
+
+First, read the documentation to understand what parameters each of the three endpoints support. Run a few sample queries through the online interface to make sense of the format in which it returns the data.
+
+We'll start with the list of most emailed articles. Using similar code as we ran earlier, run a sample query that will tell you how many results that list contains, choosing all sections of the NYT and the last 30 days as period of analysis.
+
+```{r}
+
+```
+
+The next goal will be to see what sections are more popular in terms of their articles being emailed more often. Run the same query, but now store the output in JSON format. Write code to extract the section in which the first article (the most popular) was published.
+
+```{r}
+
+```
+
+Now, write a loop that will extend this step (store the section to which each article belongs) to each article in the JSON list. Store the result of this loop as a vector where each element is the section for a different article.
+
+```{r}
+
+```
+
+Finally, produce a frequency table to understand what sections are more popular according to this metric.
+
+```{r}
+
+```
+
+(OPTIONAL). Replicate the previous analysis with the list of most shared articles. Do you find similar results?
+
+```{r}
+
+```
+
+
+
+

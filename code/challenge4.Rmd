@@ -34,10 +34,3 @@ Now that the code works, write a loop that will generalize it to all the URLs in
 
 ```
 
-
-Use quanteda to create a wordcloud with the most common words in these articles. Use pre-processing options that make sense to you. What do you find?
-
-```{r}
-
-```
-

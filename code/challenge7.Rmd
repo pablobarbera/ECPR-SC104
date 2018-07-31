@@ -1,0 +1,33 @@
+---
+title: "Challenge 7"
+author: Pablo Barbera
+date: August 2nd, 2018
+output: html_document
+---
+
+Turning to the REST API, collect the 2,000 most recent tweets from a Twitter account that you find relevant.
+
+```{r}
+
+```
+
+Using the code we just used, look at the most popular hashtags used by that account. What do you learn?
+
+```{r}
+
+
+```
+
+Produce a word cloud of this set of tweets to look at what are the words most frequently used by this user.
+
+```{r}
+
+```
+
+Estimate the political ideology of this user. Then, find the five screen names most frequently mentioned by this user and estimate their political ideology too. Are they all similar? (Note that this method will only work for US-based accounts.)
+
+```{r}
+
+```
+
+
