@@ -93,6 +93,9 @@ The following list provides links to the slides and code used in the guided codi
 <li><p><a href="code/challenge4.Rmd">Coding challenge 4: Scraping The Guardian's homepage (.Rmd file)</a></p>
 </li>
 
+<li><p><a href="slides/04-slides-APIs.pdf">SLIDES: Application Programing Interfaces</a></p>
+</li>
+
 <li><p><a href="code/07-nytimes-api.html">Scraping data from APIs
 </a> (<a href="code/07-nytimes-api.Rmd">.Rmd file</a>)</p>
 </li>
@@ -121,7 +124,7 @@ The following list provides links to the slides and code used in the guided codi
 <div id="collapse1" class="panel-collapse collapse in" style="margin:12px">
 
 <ul>
-<li><p><a href="slides/04-slides-social-media.pdf">SLIDES: Social media data</a></p>
+<li><p><a href="slides/05-slides-social-media.pdf">SLIDES: Social media data</a></p>
 </li>
 
 <li><p><a href="code/09-twitter-streaming-data-collection.html">Scraping data from Twitter's Streaming API</a> (<a href="code/09-twitter-streaming-data-collection.Rmd">.Rmd file</a>)</p>

@@ -26,7 +26,7 @@ urls <- html_attr(html_nodes(html, ".listdate a"), "href")
 urls <- str_replace(urls, "\\.\\.", "http://www.presidency.ucsb.edu/ws")
 ```
 
-Now let's try to scrape the text from the first campaign speech. Here's a [direct link](http://www.presidency.ucsb.edu/ws/index.php?pid=96348) to it, but in a second we'll try to generalize this step.
+Now let's try to scrape the text from the first campaign speech. Here's a [direct link](http://www.presidency.ucsb.edu/ws/index.php?pid=96348) to it, but in a second we'll try to generalize this step.Extract the title of the speech.
 
 ```{r}
 first <- "http://www.presidency.ucsb.edu/ws/index.php?pid=96348"
