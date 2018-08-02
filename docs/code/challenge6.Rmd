@@ -24,7 +24,7 @@ We'll now turn to an analyis of geolocated tweets. Use the itouchmap website to 
 
 ```
 
-Using the data you just downloaded, prepare a frequency table that shows which European countries were most active on Twitter during that period. You can use similar code to what we just used (see lines 103 to 107 of 01-twitter-streaming-data-colllection.Rmd), but change `map.where("state"...` to `map.where("world"...` .
+Using the data you just downloaded, prepare a frequency table that shows which European countries were most active on Twitter during that period. You can use similar code to what we just used (see lines 108 to 113 of 01-twitter-streaming-data-collection.Rmd), but change `map.where("state"...` to `map.where("world"...` .
 
 ```{r}
 

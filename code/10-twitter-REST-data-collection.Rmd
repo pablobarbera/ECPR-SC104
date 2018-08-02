@@ -170,5 +170,82 @@ tweets$date <- formatTwDate(tweets$created_at, format="date")
 hist(tweets$date, breaks="month")
 ```
 
+### Checking for bots
+
+```{r}
+# adapted from the botcheck package by @marsha5814
+botometer = function(user, my_oauth, mashape_key, verbose=TRUE) {
+  require(httr)
+  # creating OAuth token
+  myapp = oauth_app("twitter", key=my_oauth$consumer_key, 
+                    secret=my_oauth$consumer_secret)
+  sig = sign_oauth1.0(myapp, token=my_oauth$access_token,
+                    token_secret=my_oauth$access_token_secret)
+  
+  users_url = "https://api.twitter.com/1.1/users/show.json?screen_name="
+  statuses_url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="
+  search_url = "https://api.twitter.com/1.1/search/tweets.json?q=%40"
+  opts = "&count=200"
+  
+  # API call to get user
+  if (verbose) message("Downloading user profile...")
+  userdata = GET(paste0(users_url,user,opts), sig)
+  
+  # API call to get tweets
+  if (verbose) message("Downloading user tweets...")
+  tweets = GET(paste0(statuses_url,user,opts), sig)
+  
+  # API call to get mentions
+  if (verbose) message("Downloading user mentions...")
+  mentions = GET(paste0(search_url,user,opts), sig)
+  
+  
+  # Put everything in a list
+  body = list(
+    timeline = content(tweets, type="application/json"),
+    mentions = content(mentions, type="application/json"),
+    user = content(userdata, type="application/json")
+  )
+  
+  # Convert to JSON
+  body_json = RJSONIO::toJSON(body, auto_unbox = T, pretty = T)
+  
+  # Make the API request
+  if (verbose) message("Checking Botometer scores...")
+  result = POST("https://osome-botometer.p.mashape.com/2/check_account",
+                 encode="json",
+                 add_headers(`X-Mashape-Key`=mashape_key),
+                 body=body_json)
+  
+  # Parse result
+  result = content(result, as = "parsed")
+  
+  # Return "English" score
+  return(result)
+}
+
+
+results <- botometer("ECPR", my_oauth, 
+          mashape_key = 'Ujq7AAd3igmshqCBvI1LWbz0J8Hlp1hvVOYjsnMOx8z6bg4U68')
+results$scores
+results$categories
+
+results <- botometer("realDonaldTrump", my_oauth, 
+          mashape_key = 'Ujq7AAd3igmshqCBvI1LWbz0J8Hlp1hvVOYjsnMOx8z6bg4U68')
+results$scores
+results$categories
+
+results <- botometer("everyword", my_oauth, 
+          mashape_key = 'Ujq7AAd3igmshqCBvI1LWbz0J8Hlp1hvVOYjsnMOx8z6bg4U68')
+results$scores
+results$categories
+
+results <- botometer("Horse_3books", my_oauth, 
+          mashape_key = 'Ujq7AAd3igmshqCBvI1LWbz0J8Hlp1hvVOYjsnMOx8z6bg4U68')
+results$scores
+results$categories
+
+```
+
 Now time for another challenge!
 

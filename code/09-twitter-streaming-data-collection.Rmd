@@ -151,7 +151,7 @@ rts <- tweets[grep("RT @", tweets$text),]
 
 edges <- data.frame(
   node1 = rts$screen_name,
-  node2 = gsub('.*RT @([a-zA-Z0-9_]+):? ?.*', rts$text, repl="\\1"),
+  node2 = str_extract(rts$text, '.*RT @([a-zA-Z0-9_]+):? ?.*'),
   stringsAsFactors=F
 )
 
@@ -187,9 +187,9 @@ head(sort(table(ht), decreasing = TRUE))
 And who are the most frequently mentioned users?
 
 ```{r}
-users <- str_extract_all(tweets$text, '@[a-zA-Z0-9_]+')
-users <- unlist(users)
-head(sort(table(users), decreasing = TRUE))
+handles <- str_extract_all(tweets$text, '@[0-9_A-Za-z]+')
+handles_vector <- unlist(handles)
+head(sort(table(handles_vector), decreasing = TRUE), n=10)
 ```
 
 How many tweets mention Justin Bieber?

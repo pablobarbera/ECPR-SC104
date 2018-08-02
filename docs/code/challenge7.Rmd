@@ -24,10 +24,18 @@ Produce a word cloud of this set of tweets to look at what are the words most fr
 
 ```
 
-Estimate the political ideology of this user. Then, find the five screen names most frequently mentioned by this user and estimate their political ideology too. Are they all similar? (Note that this method will only work for US-based accounts.)
+Estimate the political ideology of this user.
 
 ```{r}
 
 ```
+
+Then, find the five screen names most frequently mentioned by this user and estimate their political ideology too. Are they all similar? (Note that this method will only work for US-based accounts that do not follow a lot of other users.)
+
+```{r}
+
+```
+
+Download the followers of that account (if the account has more than 5K-10K followers, choose another one that has a number below that limit.) Take a small random sample of followers (maybe 10-20) and run the botometer. What proportion of followers do you estimate to be bots?
 
 

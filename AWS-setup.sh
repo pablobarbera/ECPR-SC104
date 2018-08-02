@@ -101,7 +101,6 @@ do
 done
 
 
-
 # solutions challenge 4
 for i in 0{1..9} {10..40}
 do
@@ -109,3 +108,24 @@ do
 	cp /home/rstudio/code/challenge4-solutions.html /home/ecpr$i/code/
 	sudo chown ecpr$i -R /home/ecpr$i/
 done
+
+
+# materials day 4
+for i in 0{1..9} {10..40}
+do
+	cp /home/rstudio/code/09-twitter-streaming-data-collection.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/10-twitter-REST-data-collection.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge6.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge7.Rmd /home/ecpr$i/code/
+	sudo chown ecpr$i -R /home/ecpr$i/
+done
+
+
+# solutions challenge 5
+for i in 0{1..9} {10..40}
+do
+	cp /home/rstudio/code/challenge4-solutions.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge4-solutions.html /home/ecpr$i/code/
+	sudo chown ecpr$i -R /home/ecpr$i/
+done
+
