@@ -124,8 +124,16 @@ done
 # solutions challenge 5
 for i in 0{1..9} {10..40}
 do
-	cp /home/rstudio/code/challenge4-solutions.Rmd /home/ecpr$i/code/
-	cp /home/rstudio/code/challenge4-solutions.html /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge5-solutions.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge5-solutions.html /home/ecpr$i/code/
 	sudo chown ecpr$i -R /home/ecpr$i/
 done
 
+
+# solutions challenge 6
+for i in 0{1..9} {10..40}
+do
+	cp /home/rstudio/code/challenge6-solutions.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge6-solutions.html /home/ecpr$i/code/
+	sudo chown ecpr$i -R /home/ecpr$i/
+done
