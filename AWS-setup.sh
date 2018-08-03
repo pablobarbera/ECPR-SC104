@@ -137,3 +137,25 @@ do
 	cp /home/rstudio/code/challenge6-solutions.html /home/ecpr$i/code/
 	sudo chown ecpr$i -R /home/ecpr$i/
 done
+
+
+
+# materials day 5
+for i in 0{1..9} {10..40}
+do
+	cp /home/rstudio/code/11-data-in-PDFs.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/12-encoding.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/13-other-topics.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge8.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/data/2016results.pdf /home/ecpr$i/data/
+	cp /home/rstudio/data/amnesty.pdf /home/ecpr$i/data/
+	cp /home/rstudio/data/arrests.pdf /home/ecpr$i/data/
+	cp /home/rstudio/data/japanese-tweets.json /home/ecpr$i/data/
+	cp /home/rstudio/data/multiple-tables.pdf /home/ecpr$i/data/
+	cp /home/rstudio/data/press-release.pdf /home/ecpr$i/data/
+	cp /home/rstudio/data/unicode-tweets.json /home/ecpr$i/data/
+	cp /home/rstudio/data/unvoting.csv /home/ecpr$i/data/
+	sudo chown ecpr$i -R /home/ecpr$i/
+done
+
+

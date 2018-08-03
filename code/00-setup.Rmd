@@ -55,7 +55,8 @@ If you are running this script in your own computer, you will have to run the ch
 doInstall <- TRUE  # Change to FALSE if you don't want packages installed.
 toInstall <- c("ROAuth", "ggplot2", "stringr",
 	"devtools", "quanteda", "igraph", "httr", 
-	"glmnet", "doMC", "rvest", "rJava", "boilerpipeR", "RJSONIO")
+	"glmnet", "doMC", "rvest", "rJava", "boilerpipeR", "RJSONIO",
+	"tabulizer", "reshape")
 if (doInstall) install.packages(toInstall)
 if (doInstall) devtools::install_github("pablobarbera/twitter_ideology/pkg/tweetscores")
 if (doInstall) devtools::install_github("pablobarbera/streamR/streamR")
