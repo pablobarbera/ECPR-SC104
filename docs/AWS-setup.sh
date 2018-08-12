@@ -159,3 +159,20 @@ do
 done
 
 
+# solutions challenge 7
+for i in 0{1..9} {10..40}
+do
+	cp /home/rstudio/code/challenge7-solutions.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge7-solutions.html /home/ecpr$i/code/
+	sudo chown ecpr$i -R /home/ecpr$i/
+done
+
+
+# solutions challenge 8
+for i in 0{1..9} {10..40}
+do
+	cp /home/rstudio/code/challenge8-solutions.Rmd /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge8-solutions.html /home/ecpr$i/code/
+	cp /home/rstudio/code/challenge8-solutions-tom.Rmd /home/ecpr$i/code/
+	sudo chown ecpr$i -R /home/ecpr$i/
+done

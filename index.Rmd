@@ -21,9 +21,19 @@ We will follow a "learning-by-doing" approach, with short guided coding sessions
 
 <table class = "table table-striped">
 <tr>
-<td><a href="http://www.pablobarbera.com"><strong>Pablo Barberá</strong></a></td>
+<td><a href="http://www.pablobarbera.com"><strong>Pablo Barberá</strong></a> (Instructor)</td>
 <td><a href="mailto:P.Barbera@lse.ac.uk">P.Barbera@lse.ac.uk</a></td>
 <td><a href="https://www.twitter.com/p_barbera">@p_barbera</a></td>
+</tr>
+<tr>
+<td><a href="https://tom.paskhal.is/"><strong>Tom Paskhalis</strong></a> (Teaching Assistant)</td>
+<td><a href="mailto:t.g.paskhalis@lse.ac.uk">t.g.paskhalis@lse.ac.uk</a></td>
+<td><a href="https://www.twitter.com/tpaskhalis">@tpaskhalis</a></td>
+</tr>
+<tr>
+<td><a href="https://alberto-stefanelli.netlify.com/"><strong>Alberto Stefanelli</strong></a> (Teaching Assistant)</td>
+<td><a href="mailto:alberto.stefanelli.main@gmail.com">alberto.stefanelli.main@gmail.com</a></td>
+<td><a href="https://www.twitter.com/sergsagara">@sergsagara</a></td>
 </tr>
 </table>
 
